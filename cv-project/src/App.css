@@ -1,38 +1,107 @@
-.App {
+html, body {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  scroll-behavior: smooth;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: aliceblue;
+}
+
+header{
+  background-color: lightblue;
+  position: fixed;
+  top: 0;
+  width: 100%;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+header h1 {
+  color: rgb(91, 106, 115);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.Container {
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  gap: 40px;
 }
 
-.App-link {
-  color: #61dafb;
+.Content{
+  margin-top: 24%;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.CV{
+  margin-top: 10%;
+
+}
+
+.Content, .CV{
+  color: rgb(75, 75, 75);
+  margin-bottom: 10%;
+  background-color: gainsboro;
+  width: 40vw;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 5px 10px 18px #888888;
+}
+
+input[type=text], input[type=tel], input[type=email] {
+  width: 45%;
+  border: none;
+  margin: 10px;
+  padding: 3px;
+  height: 25px;
+}
+
+input[type=date] {
+  border: none;
+  width: 98%;
+  padding: 3px;
+  height: 25px;
+  margin-bottom: 10px;
+
+}
+
+textarea {
+  width: 93%;
+  border: none;
+  height: 50px;
+  margin: 10px;
+}
+
+.date {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 10px;
+  gap: 20px
+}
+
+.from, .to{
+  width: 47%;
+}
+
+.buttons{
+  margin: 10px;
+  width: 93%;
+  display: flex;
+  justify-content: center;
+
+}
+
+button{
+  border-style: none;
+  margin-left: 10px;
+  width: 100px;
+  height: 20px;
+  border-radius: 5px;
+  
+}
+
+button:hover{
+  cursor: pointer;
+  background-color: rgb(211, 235, 255);
 }
