@@ -1,26 +1,12 @@
 import React, { Component } from "react"
 
 class Experience extends Component {
-    constructor() {
-        super(); 
-        this.state = {
-            occupation: "",
-            employer: "",
-            from: "",
-            to: "",
-            description: ""
-        }
-        this.handleInputChange = this.handleInputChange.bind(this);
-    }
-
-    handleInputChange(event) {
-        const {name, value} = event.target
-        this.setState({
-            [name]: value
-          });
+    constructor(props) {
+        super(props); 
     }
 
     render() {
+        const { onChange, form} = this.props
         return (
             <div className="experience-form">
             <h2>Work Experience</h2>
@@ -31,16 +17,16 @@ class Experience extends Component {
                         id='occupation' 
                         placeholder="Occupation"
                         name="occupation"
-                        value={this.state.occupation}
-                        onChange={this.handleInputChange}
+                        value={form.occupation}
+                        onChange={onChange}
                     />
                     <input 
                         type='text' 
                         id='employer' 
                         placeholder="Employer"
                         name="employer"
-                        value={this.state.employer}
-                        onChange={this.handleInputChange}
+                        value={form.employer}
+                        onChange={onChange}
                     />
                 </div>
                 <div className="date">
@@ -50,9 +36,9 @@ class Experience extends Component {
                             type='date' 
                             id='from' 
                             placeholder="From"
-                            name="from"
-                            value={this.state.from}
-                            onChange={this.handleInputChange}
+                            name="from2"
+                            value={form.from2}
+                            onChange={onChange}
                         />
                     </div>
                     <div className="to">
@@ -61,9 +47,9 @@ class Experience extends Component {
                             type='date' 
                             id='to' 
                             placeholder="To"
-                            name="to"
-                            value={this.state.to}
-                            onChange={this.handleInputChange}
+                            name="to2"
+                            value={form.to2}
+                            onChange={onChange}
                         />
                     </div>
                 </div>
@@ -74,8 +60,8 @@ class Experience extends Component {
                         id='description' 
                         placeholder="Job Description"
                         name="description"
-                        value={this.state.description}
-                        onChange={this.handleInputChange}
+                        value={form.description}
+                        onChange={onChange}
                     />
                 </div>
             </form>

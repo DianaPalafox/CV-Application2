@@ -1,26 +1,12 @@
 import React, { Component } from "react"
 
 class Education extends Component{
-    constructor() {
-        super();
-        this.state = {
-            title: "",
-            university: "",
-            from: "",
-            to:"",
-        };
-
-        this.handleInputChange = this.handleInputChange.bind(this);
+    constructor(props) {
+        super(props);
     };
 
-    handleInputChange(event) {
-        const {name, value} = event.target
-        this.setState({
-            [name]: value
-          });
-    }
-
     render() {
+        const { onChange, form} = this.props
         return(
             <div className="education-form">
             <h2>Education</h2>
@@ -31,16 +17,16 @@ class Education extends Component{
                         id='title' 
                         placeholder="Degree" 
                         name="title"
-                        value={this.state.title}
-                        onChange={this.handleInputChange}
+                        value={form.title}
+                        onChange={onChange}
                     />
                     <input 
                         type='text' 
                         id='university' 
                         placeholder="University"
                         name="university"
-                        value={this.state.university}
-                        onChange={this.handleInputChange}
+                        value={form.university}
+                        onChange={onChange}
                     />
                 </div>
                 <div className="date">
@@ -51,8 +37,8 @@ class Education extends Component{
                             id='from' 
                             placeholder="From"
                             name="from"
-                            value={this.state.from}
-                            onChange={this.handleInputChange}
+                            value={form.from}
+                            onChange={onChange}
                         />
                     </div>
                     <div className="to">
@@ -62,8 +48,8 @@ class Education extends Component{
                             id='to' 
                             placeholder="To"
                             name="to"
-                            value={this.state.to}
-                            onChange={this.handleInputChange}
+                            value={form.to}
+                            onChange={onChange}
                         />
                     </div>
                 </div>

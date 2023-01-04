@@ -1,26 +1,12 @@
 import React, { Component } from "react"
 
 class Information extends Component{
-    constructor(){
-        super();
-        this.state = {
-            firstName: "",
-            lastName: "",
-            email: "",
-            tel: ""
-        }
-
-        this.handleInputChange = this.handleInputChange.bind(this);
-    }
-
-    handleInputChange(event) {
-        const {name, value} = event.target
-        this.setState({
-            [name]: value
-          });
+    constructor(props){
+        super(props);
     }
 
     render() {
+        const { onChange, form} = this.props
         return(
             <div className="information-form">
             <h2>General Information</h2>
@@ -31,16 +17,16 @@ class Information extends Component{
                         type='text' 
                         id='firstName' 
                         placeholder="First Name"
-                        value={this.state.firstName}
-                        onChange={this.handleInputChange}
+                        value={form.firstName}
+                        onChange={onChange}
                     />
                     <input 
                         name='lastName' 
                         type='text' 
                         id='lastName' 
                         placeholder="Last Name"
-                        value={this.state.lastName}
-                        onChange={this.handleInputChange}
+                        value={form.lastName}
+                        onChange={onChange}
                     />
                 </div>
                 <div>
@@ -49,16 +35,16 @@ class Information extends Component{
                         type='email' 
                         id='email' 
                         placeholder="Email"
-                        value={this.state.email}
-                        onChange={this.handleInputChange}
+                        value={form.email}
+                        onChange={onChange}
                     />
                     <input 
                         name='tel' 
                         type='tel' 
                         id='tel' 
                         placeholder="Phone Number"
-                        value={this.state.tel}
-                        onChange={this.handleInputChange}
+                        value={form.tel}
+                        onChange={onChange}
                     />
                 </div>
             </form>
