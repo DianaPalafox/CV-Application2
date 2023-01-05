@@ -10,16 +10,12 @@ class Form extends Component {
     constructor(props){
         super(props);
         this.state = {
-            addComponent: [{}],
+            addEducationComponent: [{title: '', university: '', from: '', to: ''}],
             form:{
                 firstName: "",
                 lastName: "",
                 email: "",
                 tel: "",
-                title: "",
-                university: "",
-                from: "",
-                to:"",
                 occupation: "",
                 employer: "",
                 from2: "",
@@ -33,12 +29,19 @@ class Form extends Component {
     }
     
 
-    addComponents() {
+    handleEducationComponent() {
         this.setState((
             {
-                addComponent:[...this.state.addComponent, {}],
+                addEducationComponent:[...this.state.addEducationComponent, {}],
             }
         ))
+    }
+
+    handleEducationChange(event, index){
+        const {name, value} = event.target
+        const comp = [...this.state.addEducationComponent];
+        comp[index][name] = value;
+        this.setState({comp})
     }
 
 
@@ -61,17 +64,17 @@ class Form extends Component {
                 onChange={this.handleInputChange}
                 form={this.state.form}
             />
-            {this.state.addComponent.map((item, index) => {
+            {this.state.addEducationComponent.map((item, index) => {
                 return(
                     <Education 
                         key={index}
-                        onChange={(event) => this.handleInputChange(event, index)}
-                        form={this.state.form}
+                        onChange={(event) => this.handleEducationChange(event, index)}
+                        education={this.state.addEducationComponent}
                     />
                 );
             })}
             <div className="add-form-button">
-            <button onClick={()=>this.addComponents()} type="submit">
+            <button onClick={()=>this.handleEducationComponent()} type="submit">
                 Add More
             </button>
             </div>
@@ -88,12 +91,12 @@ class Form extends Component {
         </div>
         <div className="CV">
           <CVInfo form={this.state.form}/>
-          {this.state.addComponent.map((item, index) => {
+          {this.state.addEducationComponent.map((item, index) => {
                 return(
                     <CVEducation 
                         key={index}
-                        onChange={(event) => this.handleInputChange(event, index)}
-                        form={this.state.form}
+                        onChange={(event) => this.handleEducationChange(event, index)}
+                        education={this.state.addEducationComponent}
                     />
                 );
             })}
