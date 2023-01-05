@@ -2,12 +2,15 @@ import React, { Component } from "react"
 import Education from "./Education"
 import Information from "./Information"
 import Experience from "./Experience"
-import CV from "./CV"
+import CVInfo from "./CVInfo"
+import CVEducation from "./CVEducation"
+import CVExperience from "./CVExperience"
 
 class Form extends Component {
     constructor(props){
         super(props);
         this.state = {
+            addComponent: [{}],
             form:{
                 firstName: "",
                 lastName: "",
@@ -28,6 +31,16 @@ class Form extends Component {
 
         this.handleInputChange = this.handleInputChange.bind(this);
     }
+    
+
+    addComponents() {
+        this.setState((
+            {
+                addComponent:[...this.state.addComponent, {}],
+            }
+        ))
+    }
+
 
     handleInputChange(event) {
         const {name, value} = event.target
@@ -48,18 +61,43 @@ class Form extends Component {
                 onChange={this.handleInputChange}
                 form={this.state.form}
             />
-            <Education 
-                onChange={this.handleInputChange}
-                form={this.state.form}
-            />
+            {this.state.addComponent.map((item, index) => {
+                return(
+                    <Education 
+                        key={index}
+                        onChange={(event) => this.handleInputChange(event, index)}
+                        form={this.state.form}
+                    />
+                );
+            })}
+            <div className="add-form-button">
+            <button onClick={()=>this.addComponents()} type="submit">
+                Add More
+            </button>
+            </div>
             <Experience 
                 onChange={this.handleInputChange}
                 form={this.state.form}
             />
+            <div className="add-form-button">
+            <button type="submit">
+                Add More
+            </button>
+            </div>
           </div> 
         </div>
         <div className="CV">
-          <CV form={this.state.form}/>
+          <CVInfo form={this.state.form}/>
+          {this.state.addComponent.map((item, index) => {
+                return(
+                    <CVEducation 
+                        key={index}
+                        onChange={(event) => this.handleInputChange(event, index)}
+                        form={this.state.form}
+                    />
+                );
+            })}
+          <CVExperience form={this.state.form}/>
         </div>
       </div>
         )
