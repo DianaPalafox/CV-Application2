@@ -6,16 +6,16 @@ class CVEducation extends Component{
     }
 
     render() {
-        const { education } = this.props;
+        const { form } = this.props;
         return(
             <div>
             <div className="CV-content">
             <div className="EducationCV">  
                 <h2>Education</h2>
-                <h2>{education.university}</h2>
-                <h2>{education.title}</h2>
-                <span>{education.from}</span> -
-                <span>{education.to}</span>
+                <h2>{form.university}</h2>
+                <h2>{form.title}</h2>
+                <span>{form.from}</span> -
+                <span>{form.to}</span>
             </div>
             </div>
         </div>
